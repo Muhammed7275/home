@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kâbe Duası - Bakara 127 Sesli Okuyucu</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Amiri:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+        .arabic-text-container {
+            font-family: 'Amiri', serif;
+            font-size: 2.25rem; /* text-4xl */
+            line-height: 2.5;
+            direction: rtl;
+            text-align: right;
+            color: #333333;
+            display: block; /* Spanlerin inline olması için */
+        }
+        /* Vurgulama Stili: Mor renkle arka planı hafifçe boyar */
+        .highlighted {
+            background-color: #EDE9FE; /* indigo-100 */
+            color: #4C1D95; /* indigo-900 */
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Yeni: Okuma İlerleme Çubuğu Stilleri */
+        .segment-wrapper {
+            position: relative;
+            padding-bottom: 8px; /* Çubuk için boşluk */
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #E0E7FF; /* indigo-100 */
+            border-radius: 2px;
+            position: absolute;
+            bottom: 0;
+            right: 0; 
+            left: 0;
+            overflow: hidden;
+            display: none; /* Başlangıçta gizli */
+            direction: ltr; /* Çubuğun dolmasını kontrol etmek için */
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #4F46E5; /* indigo-600 */
+            border-radius: 2px;
+            transition: width 0.1s linear; /* Smooth but fast transition */
+            /* Sağdan sola dolması için (RTL metin için görsel olarak uygun) */
+            transform-origin: right;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-3xl font-bold text-center mb-6 text-indigo-700">Bakara Suresi (2:127) - Hz. İbrahim'in Duası</h1>
+    <p class="text-center text-gray-500 mb-8">Kâbe'nin inşası sırasında yapılan dua.</p>
+
+    <!-- Arapça Metin (Segmentlere Ayrılmış) -->
+    <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl mb-6">
+        <h2 class="text-xl font-semibold mb-3 text-indigo-600">Arapça Metin (Takip Edilebilir)</h2>
+        <div class="arabic-text-container">
+            
+            <!-- Segment 1 Wrapper (Çubuk bu div'in içinde olacak) -->
+            <div id="wrapper-1" class="segment-wrapper">
+                <span id="segment-1" class="cursor-pointer hover:bg-gray-200 rounded-lg p-1" onclick="readSegmentedAyet(1)">
+                    وَاِذْ يَرْفَعُ اِبْرٰهٖيمُ الْقَوَاعِدَ مِنَ الْبَيْتِ وَاِسْمٰعٖيلُۜ 
+                </span>
+                <div id="progress-1" class="progress-bar-container"><div class="progress-bar"></div></div>
+            </div>
+            
+            <!-- Segment 2 Wrapper -->
+            <div id="wrapper-2" class="segment-wrapper">
+                <span id="segment-2" class="cursor-pointer hover:bg-gray-200 rounded-lg p-1" onclick="readSegmentedAyet(2)">
+                    رَبَّنَا تَقَبَّلْ مِنَّاۜ 
+                </span>
+                <div id="progress-2" class="progress-bar-container"><div class="progress-bar"></div></div>
+            </div>
+            
+            <!-- Segment 3 Wrapper -->
+            <div id="wrapper-3" class="segment-wrapper">
+                <span id="segment-3" class="cursor-pointer hover:bg-gray-200 rounded-lg p-1" onclick="readSegmentedAyet(3)">
+                    اِنَّكَ اَنْتَ السَّمٖيعُ الْعَلٖيمُ
+                </span>
+                <div id="progress-3" class="progress-bar-container"><div class="progress-bar"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Türkçe Okunuşu ve Anlamı -->
+    <div class="p-6 bg-yellow-50 border border-yellow-200 rounded-xl mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-yellow-700">Türkçe Okunuşu (Transliterasyon)</h2>
+        <p class="text-lg text-gray-800 leading-relaxed mb-4">
+            **"Ve iz yerfe'u ibrâhîmu-lkavâ'ide mine-lbeyti ve ismâ'îl. Rabbenaa tekabbel minnâ. İnneke ente-ssemî'u-l'alîm."**
+        </p>
+        <h2 class="text-xl font-semibold mb-3 text-yellow-700">Anlamı (Meal)</h2>
+        <p class="text-lg text-gray-800 leading-relaxed">
+            "İbrâhim, İsmâil ile birlikte Beyt'in (Kâbe'nin) temellerini yükseltiyordu. (Şöyle dua ettiler:) 'Rabbimiz! Bizden kabul buyur! Şüphesiz sen hakkıyla işitensin, hakkıyla bilensin'."
+        </p>
+    </div>
+    
+    <!-- Oku Butonu, Kontroller ve Mesaj Alanı -->
+    <div class="flex flex-col items-center space-y-4">
+        
+        <!-- Kontroller (Hız ve Ses) -->
+        <div class="flex space-x-4">
+            <div class="flex flex-col">
+                <label for="speedSelect" class="text-sm font-medium text-gray-700 mb-1">Okuma Hızı:</label>
+                <select id="speedSelect" class="p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="very_slow">Çok Yavaş</option>
+                    <option value="slow">Yavaş</option>
+                    <option value="medium" selected>Orta (Normal)</option>
+                    <option value="fast">Hızlı</option>
+                    <option value="very_fast">Çok Hızlı</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col">
+                <label for="voiceSelect" class="text-sm font-medium text-gray-700 mb-1">Okuyucu Sesi:</label>
+                <select id="voiceSelect" class="p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    <!-- Orus (Firm) erkek sesine yakın, Kore (Firm) kadın/nötr sese yakındır -->
+                    <option value="Orus">Erkek Sesi</option>
+                    <option value="Kore" selected>Kadın/Nötr Sesi</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Oku ve Durdur Butonları -->
+        <div class="flex space-x-4 w-full justify-center">
+            <button id="readButton" 
+                    onclick="readSegmentedAyet(1)" 
+                    class="px-8 py-3 bg-indigo-600 text-white font-bold text-xl rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105 active:scale-95 disabled:bg-indigo-400 flex-grow max-w-xs">
+                Oku 🎧 (Tilavet Dinle)
+            </button>
+            <button id="stopButton" 
+                    onclick="stopReading()" 
+                    disabled
+                    class="px-4 py-3 bg-red-500 text-white font-bold text-xl rounded-full shadow-lg hover:bg-red-600 transition duration-300 transform hover:scale-105 active:scale-95 disabled:bg-gray-400 flex-grow-0 max-w-[150px]">
+                Durdur 🛑
+            </button>
+        </div>
+
+        <p id="messageArea" class="mt-4 text-center text-sm font-medium text-gray-600 min-h-[1.5rem]"></p>
+    </div>
+    
+</div>
+
+<script>
+    // Kullanıcı tarafından sağlanan API anahtarı
+    const apiKey = "AIzaSyAudmPBFeS4MWZxR39IZ9LJOPhfEtxHawE"; 
+    
+    let currentAudio = null; // Şu anda oynatılan ses öğesi
+    let loadingInterval = null; // Yüklenme animasyonu için interval ID
+    let animationFrameId = null; // Animasyon çerçevesi kimliği
+    let isReading = false; // Okuma durumunu takip eder
+    let currentSegmentIndex = 0; // O anda okunan segmentin indeksi
+
+    // Ayeti mantıksal segmentlere ayırma
+    const ARABIC_SEGMENTS = [
+        { id: 1, text: "وَاِذْ يَرْفَعُ اِبْرٰهٖيمُ الْقَوَاعِدَ مِنَ الْبَيْتِ وَاِسْمٰعٖيلُۜ" },
+        { id: 2, text: "رَبَّنَا تَقَبَّلْ مِنَّاۜ" },
+        { id: 3, text: "اِنَّكَ اَنْتَ السَّمٖيعُ الْعَلٖيمُ" }
+    ];
+
+    // --- Görsel Kontrol Fonksiyonları ---
+
+    // Vurgulamayı ve ilerleme çubuklarını kaldırır
+    function clearHighlight() {
+        ARABIC_SEGMENTS.forEach(segment => {
+            const el = document.getElementById(`segment-${segment.id}`);
+            if (el) {
+                el.classList.remove('highlighted');
+            }
+            // İlerleme çubuğunu sıfırla ve gizle
+            const progressContainer = document.getElementById(`progress-${segment.id}`);
+            if (progressContainer) {
+                progressContainer.style.display = 'none';
+                progressContainer.querySelector('.progress-bar').style.width = '0%';
+            }
+        });
+        stopProgressBarAnimation(); // Animasyonu durdur
+    }
+
+    // Belirtilen segmenti vurgular
+    function highlightSegment(id) {
+        clearHighlight(); // Tüm segmentleri temizlerken ilerleme çubuğu animasyonunu da durdurur
+        const el = document.getElementById(`segment-${id}`);
+        if (el) {
+            el.classList.add('highlighted');
+        }
+    }
+
+    // --- Yardımcı Ses Fonksiyonları ---
+
+    // Base64 dizesini ArrayBuffer'a dönüştürür.
+    function base64ToArrayBuffer(base64) {
+        const binaryString = atob(base64);
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return bytes.buffer;
+    }
+
+    // PCM ses verisini bir WAV dosyası Blob'una dönüştürür.
+    function pcmToWav(pcmData, sampleRate) {
+        // [PCM'den WAV'a dönüştürme mantığı burada kalır, değişmedi]
+        const numChannels = 1;
+        const bitsPerSample = 16;
+        const byteRate = sampleRate * numChannels * (bitsPerSample / 8);
+        const blockAlign = numChannels * (bitsPerSample / 8);
+        const dataLength = pcmData.length * 2; 
+        const buffer = new ArrayBuffer(44 + dataLength);
+        const view = new DataView(buffer);
+        let offset = 0;
+
+        function writeString(s) {
+            for (let i = 0; i < s.length; i++) {
+                view.setUint8(offset + i, s.charCodeAt(i));
+            }
+            offset += s.length;
+        }
+
+        // RIFF chunk
+        writeString('RIFF');
+        view.setUint32(offset, 36 + dataLength, true); offset += 4;
+        writeString('WAVE');
+        // FMT sub-chunk
+        writeString('fmt ');
+        view.setUint32(offset, 16, true); offset += 4; 
+        view.setUint16(offset, 1, true); offset += 2; 
+        view.setUint16(offset, numChannels, true); offset += 2; 
+        view.setUint32(offset, sampleRate, true); offset += 4; 
+        view.setUint32(offset, byteRate, true); offset += 4; 
+        view.setUint16(offset, blockAlign, true); offset += 2; 
+        view.setUint16(offset, bitsPerSample, true); offset += 2; 
+        // DATA sub-chunk
+        writeString('data');
+        view.setUint32(offset, dataLength, true); offset += 4;
+        // PCM data
+        for (let i = 0; i < pcmData.length; i++) {
+            view.setInt16(offset, pcmData[i], true);
+            offset += 2;
+        }
+
+        return new Blob([buffer], { type: 'audio/wav' });
+    }
+
+    // Yüklenme animasyonunu başlatır
+    function startLoadingAnimation(messageArea, initialText) {
+        stopLoadingAnimation(); 
+        let dots = 0;
+        messageArea.textContent = initialText;
+        loadingInterval = setInterval(() => {
+            dots = (dots + 1) % 4;
+            const dotString = ".".repeat(dots);
+            messageArea.textContent = initialText + dotString;
+        }, 400); 
+    }
+
+    // Yüklenme animasyonunu durdurur
+    function stopLoadingAnimation() {
+        if (loadingInterval) {
+            clearInterval(loadingInterval);
+            loadingInterval = null;
+        }
+    }
+
+    // Yeni: İlerleme Çubuğu Animasyonunu Yönetme
+    function stopProgressBarAnimation() {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+    }
+
+    function startProgressBar(segmentId) {
+        stopProgressBarAnimation(); // Önceki animasyonu durdur
+
+        const progressBarContainer = document.getElementById(`progress-${segmentId}`);
+        const progressBar = progressBarContainer.querySelector('.progress-bar');
+        
+        if (!currentAudio || !progressBarContainer || !progressBar) return;
+
+        // Çubuğu görünür yap
+        progressBarContainer.style.display = 'block';
+        progressBar.style.width = '0%'; 
+
+        // Ses süresinin Audio elementine yüklenmesini bekle
+        const durationCheck = setInterval(() => {
+            if (currentAudio.duration > 0 && currentAudio.readyState >= 3) {
+                clearInterval(durationCheck);
+                const duration = currentAudio.duration;
+
+                function animate() {
+                    if (!currentAudio || currentAudio.paused || currentAudio.ended) {
+                        // Oynatma durduysa veya bittiyse animasyonu durdur
+                        stopProgressBarAnimation();
+                        return;
+                    }
+                    
+                    const progress = currentAudio.currentTime / duration;
+                    
+                    // Çubuğun genişliğini okuma ilerlemesine göre ayarla
+                    progressBar.style.width = `${progress * 100}%`;
+
+                    animationFrameId = requestAnimationFrame(animate);
+                }
+                
+                // Başlat
+                animate();
+
+            } else if (currentAudio.readyState === 4) {
+                 // Metadata yüklendi ancak duration hala 0 olabilir
+            } else if (currentAudio.error) {
+                 clearInterval(durationCheck);
+                 console.error("Audio yüklenemedi, ilerleme çubuğu başlatılamadı.");
+                 stopProgressBarAnimation();
+            }
+        }, 100); 
+    }
+
+
+    // Oynatma Kontrolü: Durdurma İşlevi
+    function stopReading() {
+        stopLoadingAnimation();
+        stopProgressBarAnimation(); // Animasyonu da durdur
+        isReading = false;
+        currentSegmentIndex = 0;
+        clearHighlight(); // Bu, çubukları da gizleyip sıfırlar
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio = null;
+        }
+        document.getElementById('stopButton').disabled = true;
+        document.getElementById('readButton').disabled = false;
+        document.getElementById('messageArea').textContent = "Okuma durduruldu.";
+    }
+
+    // Segment sesini oynatır ve bitene kadar bekler (Promise döndürür)
+    function playAudioSegment(wavBlob, segmentId) {
+        return new Promise((resolve, reject) => {
+            if (!isReading) {
+                // Okuma durdurulmuşsa hemen çöz
+                return resolve();
+            }
+            
+            // Önceki sesi durdur ve ilerleme çubuğunu sıfırla/gizle
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                stopProgressBarAnimation();
+                document.getElementById(`progress-${currentSegmentIndex}`).style.display = 'none';
+            }
+
+            const audioUrl = URL.createObjectURL(wavBlob);
+            currentAudio = new Audio(audioUrl);
+            
+            highlightSegment(segmentId); // Segmenti Vurgula
+            
+            currentAudio.onloadedmetadata = () => {
+                // Sesin metadata'sı yüklendikten hemen sonra ilerleme çubuğunu başlat
+                startProgressBar(segmentId);
+            };
+
+
+            currentAudio.onended = () => {
+                // Çubuk animasyonu onended tarafından da durdurulacak
+                stopProgressBarAnimation(); 
+                document.getElementById(`progress-${segmentId}`).style.display = 'none';
+                currentAudio = null;
+                resolve(); // Bitti, bir sonraki segmente geç
+            };
+
+            currentAudio.onerror = (e) => {
+                stopProgressBarAnimation();
+                document.getElementById(`progress-${segmentId}`).style.display = 'none';
+                console.error(`Segment ${segmentId} oynatma hatası:`, e);
+                reject(new Error(`Ses oynatılamadı (Segment ${segmentId}).`));
+            }
+
+            currentAudio.play().catch(e => {
+                stopProgressBarAnimation();
+                // HATA DÜZELTİLDİ: 'none` ifadesindeki yanlış backtick (`) karakteri, geçerli bir tek tırnak (') ile değiştirildi.
+                document.getElementById(`progress-${segmentId}`).style.display = 'none';
+                if (e.name === "NotAllowedError" || e.name === "AbortError") {
+                    // Tarayıcı otomatik oynatma kısıtlaması, kullanıcı müdahalesi beklenir.
+                    document.getElementById('messageArea').textContent = "Hata: Ses oynatılamadı. Oynatmak için ekrana tıklamanız gerekebilir.";
+                    currentAudio = null;
+                    return reject(new Error("Oynatma kısıtlaması"));
+                }
+                currentAudio = null;
+                reject(new Error(`Oynatma hatası: ${e.message}`));
+            });
+        });
+    }
+    
+    // --- API Çağrısı (Ses Oluşturma) ---
+
+    async function fetchTTS(prompt, selectedVoice, segmentId) {
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+        
+        const payload = {
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+                responseModalities: ["AUDIO"], 
+                speechConfig: {
+                    voiceConfig: { prebuiltVoiceConfig: { voiceName: selectedVoice } }
+                }
+            },
+            model: "gemini-2.5-flash-preview-tts"
+        };
+        
+        const maxRetries = 5; 
+        let lastError = null;
+        const delayBaseMs = 8000; // Taban gecikme 8 saniye olarak korundu
+
+        for (let i = 0; i < maxRetries; i++) {
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    if (response.status === 403) {
+                        throw new Error(`HTTP Hata: 403. Erişim Reddedildi. (Yetkilendirme sorunu).`);
+                    }
+                    if (response.status === 429) {
+                         // 429 özel olarak ele alınıyor
+                        throw new Error(`HTTP Hata: 429. (Çok fazla istek).`);
+                    }
+                    throw new Error(`HTTP Hata: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.[0];
+                const audioData = part?.inlineData?.data;
+                const mimeType = part?.inlineData?.mimeType;
+
+                if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                    const match = mimeType.match(/rate=(\d+)/);
+                    if (!match) throw new Error("MimeType'ta örnekleme hızı bulunamadı.");
+                    const sampleRate = parseInt(match[1], 10);
+                    
+                    const pcmDataBuffer = base64ToArrayBuffer(audioData);
+                    const pcm16 = new Int16Array(pcmDataBuffer);
+                    
+                    // WAV Blob'unu geri döndür
+                    return { wavBlob: pcmToWav(pcm16, sampleRate) }; 
+
+                } else {
+                    throw new Error("API'den geçerli ses verisi alınamadı.");
+                }
+
+            } catch (error) {
+                lastError = error;
+                console.error(`API Çağrısı Başarısız (Segment ${segmentId}):`, error);
+                if (i < maxRetries - 1) {
+                    // Üstel geri çekilme süresi: 8s, 16s, 32s, 64s
+                    const delay = Math.pow(2, i) * delayBaseMs; 
+                    // Hata mesajını, beklerken de göster
+                    messageArea.textContent = `Hata, ${i + 1}. deneme başarısız. ${delay / 1000} saniye bekleniyor...`;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+        
+        // Tüm denemeler başarısız oldu
+        throw lastError; 
+    }
+
+    // --- Ana Okuma İşlevi (Segment Yönetimi) ---
+
+    async function readSegmentedAyet(startSegmentId = 1) {
+        const button = document.getElementById('readButton');
+        const stopButton = document.getElementById('stopButton');
+        const messageArea = document.getElementById('messageArea');
+
+        isReading = true;
+        button.disabled = true;
+        stopButton.disabled = false;
+        clearHighlight();
+
+        const speed = document.getElementById('speedSelect').value;
+        const voice = document.getElementById('voiceSelect').value;
+        
+        // Hız seçimine göre TTS için uygun bir ifade oluştur
+        let speedInstruction = "";
+        switch (speed) {
+            case 'very_slow': speedInstruction = "in a very slow and measured pace"; break;
+            case 'slow': speedInstruction = "in a slow and deliberate pace"; break;
+            case 'medium': speedInstruction = "in a standard recitation pace"; break;
+            case 'fast': speedInstruction = "in a fast pace, like 'Tadwir'"; break;
+            case 'very_fast': speedInstruction = "in a very fast pace, like 'Hadr'"; break;
+        }
+
+        const startIndex = ARABIC_SEGMENTS.findIndex(s => s.id === startSegmentId);
+
+        try {
+            for (let i = startIndex; i < ARABIC_SEGMENTS.length; i++) {
+                if (!isReading) break; // Durdurulduysa döngüden çık
+
+                const segment = ARABIC_SEGMENTS[i];
+                currentSegmentIndex = segment.id;
+
+                messageArea.textContent = `Ses oluşturuluyor: Parça ${i + 1}/${ARABIC_SEGMENTS.length}`;
+                startLoadingAnimation(messageArea, `Ses oluşturuluyor: Parça ${i + 1}/${ARABIC_SEGMENTS.length}`);
+
+                // Segmentin sesini oluştur
+                const ayetText = `Recite the following Quranic Arabic verse ${speedInstruction}: ${segment.text}`;
+                const { wavBlob } = await fetchTTS(ayetText, voice, segment.id);
+                
+                stopLoadingAnimation();
+                messageArea.textContent = `Tilavet oynatılıyor: Parça ${i + 1}/${ARABIC_SEGMENTS.length}`;
+
+                // Ses oynatılırken vurguyu yap ve bitmesini bekle
+                await playAudioSegment(wavBlob, segment.id);
+            }
+
+            if (isReading) {
+                // Tüm segmentler tamamlandıysa
+                stopReading();
+                messageArea.textContent = "Tilavet tamamlandı.";
+            }
+
+        } catch (error) {
+            // Hata oluşursa
+            stopReading();
+            console.error("Genel Okuma Hatası:", error);
+            messageArea.textContent = `Hata: Ses oluşturulamadı. Lütfen tekrar deneyin. (${error.message})`;
+            clearHighlight();
+            button.disabled = false;
+            stopButton.disabled = true;
+        }
+        
+        // Okuma normal şekilde biterse
+        if (isReading) {
+            stopReading();
+            messageArea.textContent = "Tilavet tamamlandı.";
+        }
+    }
+
+</script>
+
+</body>
+</html>
